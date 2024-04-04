@@ -99,7 +99,6 @@
                             <table class="table align-items-center mb-0">
                                 <thead>
                                 <tr>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Seclect</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Full Name</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"> Phone Number</th>
@@ -116,16 +115,10 @@
 
                                             <td >
                                                 <input type="checkbox" name="selectedRows[]" value="{{ $data->id }}">
-                                            </td>
-
-                                        <td>
-                                            <div class="d-flex px-2 py-1">
-                                                <div class="d-flex flex-column justify-content-center">
-
-                                                    <h6 class="mb-0 text-sm"> {{$data->id}}</h6>
-                                                </div>
-                                            </div>
-                                        </td>
+                                                <h6 class="mb-0 text-sm"> {{$data->id}}</h6>
+                                                {{-- {{ $row->full_name }} --}}
+                                                <br>
+                                         </td>
                                         <td>
                                             <p class="text-xs text-secondary mb-0">{{$data->full_name}}</p>
                                         </td>
@@ -135,26 +128,21 @@
                                         <td class="align-middle text-center">
                                             <span class="text-secondary text-xs font-weight-bold">{{$data->email}}</span>
                                         </td>
-                                        <td class="align-middle">
+                                        {{-- <td class="align-middle">
+                                            <button type="submit">Export</button>
+                                        </form>
 
-                                                {{-- @foreach($data as $row)
-                                                    {{ $data->full_name }}
-                                                    <br>
-                                                @endforeach --}}
-                                                <button type="submit">Export</button>
-                                            </form>
-                                        </td>
-                                       {{-- <td class="align-middle">
-                                            <a href="{{$user->id}}/delete2" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delete user">
-                                                Delete
-                                            </a>
                                         </td> --}}
-
                                     </tr>
+
 
                                 @endforeach
                                 <td class="align-middle">
+                                    <button type="submit">Export</button>
+                                </form>
+                                </td>
 
+                                <td class="align-middle">
                                     <form action="{{ route('import.upload') }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <input type="file" name="file">
